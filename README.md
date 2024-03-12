@@ -8,7 +8,6 @@
 * ASP.NET Core 7 
 * EF Core 
 * Swagger 
-* AutoMapper
 * JWT Token
 
 ## Funcionalidades 
