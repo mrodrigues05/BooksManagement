@@ -1,16 +1,14 @@
 ﻿using BooksManagement.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace BooksManagement.Persistence
+public class BooksDbContext : DbContext
 {
-    public class BooksDbContext 
+    public BooksDbContext(DbContextOptions<BooksDbContext> options) : base(options)
     {
-        public List<Book> Books { get; set; }
-
-        public BooksDbContext() 
-        { 
-            Books = new List<Book>();
-        }
 
     }
+
+    public DbSet<Book> Books { get; set; }
+
 }
+

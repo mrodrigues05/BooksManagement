@@ -1,6 +1,4 @@
 ﻿using BooksManagement.Entities;
-using BooksManagement.Persistence;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BooksManagement.Controllers
@@ -41,6 +39,7 @@ namespace BooksManagement.Controllers
         public IActionResult Post(Book book)
         {
             _context.Books.Add(book);
+            _context.SaveChanges();
 
             return CreatedAtAction(nameof(GetById), new { id = book.Id }, book);
         }
@@ -57,6 +56,8 @@ namespace BooksManagement.Controllers
 
             book.Update(input.Title, input.Genre, input.Author, input.StartDate, input.EndDate);
 
+            _context.Books.Update(book);
+            _context.SaveChanges();
             return NoContent();
         }
 
@@ -71,6 +72,8 @@ namespace BooksManagement.Controllers
             }
 
             books.Delete();
+
+            _context.SaveChanges();
 
             return NoContent();
         }
